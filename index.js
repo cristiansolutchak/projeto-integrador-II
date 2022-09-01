@@ -349,7 +349,7 @@ function closeModal(){
 
 // ! função mudar
 
-function mudar(elemento1, elemento2, elemento){
+function mudar(elemento1, elemento2){
     if(elemento1){
         document.getElementById('item1').style.display = 'block';
         document.getElementById('item2').style.display = 'none';
@@ -376,11 +376,6 @@ function mudar(elemento1, elemento2, elemento){
 
 
 // ! função quiz
-
-function iniciarQuiz(){
-
-}
-
 
 let allEvents = {0: 'onabort',
     1: 'onafterprint',

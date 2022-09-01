@@ -421,3 +421,49 @@
   width: 100%;
   height: 350px;
  }
+ 
+ #contatos{
+  
+  margin-left: 10px;
+  width: 25px;
+  height: 25px;
+ }
+
+ #links_contato{
+  margin-top: -90px;
+  margin-left: 1230px;
+ }
+
+ #creditos{
+  margin-left: 720px;
+ }
+
+ #comentarios{
+  position: absolute;
+  margin-left: 292px;
+  margin-top: 40px;
+  border-radius: 5px;
+  width: 350px;
+  height: 50px;
+  background-color: #0c0c0c;
+ }
+
+ #imagem_logo_roda_pe{
+  margin-top: 150px;
+  margin-left: 220px;
+  width: 60px;
+  height: 60px;
+ }
+
+ #imagem_usuario{
+  margin-top: 40px;
+  margin-left: 220px;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+ }
+  .escondido{
+  display: none;
+  }
+ 
+ 
