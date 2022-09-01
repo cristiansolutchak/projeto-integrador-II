@@ -1,15 +1,27 @@
-function colocarTamanho(){
-    let tamanho = window.innerHeight;
-    if(tamanho > 600) tamanho = 600;
-    document.getElementsByTagName("header")[0].style.height = tamanho+"px";
+"use strict"
+// ! animação de scroll
+let x = 0,
+    animacao;
+function descer(local){
+    animacao=setInterval(scrolar, 10, local);
 }
 
-function formatar(txt=''){
-    let i=-1;
-    while(i++<200)txt=txt.replace("null", '').replace(": ", ",");
-    txt = txt.split(",");
-    return txt;
+function scrolar(final){
+    if(x===final+20) {
+        eliminarAnimacao(animacao);
+        return;
+    }
+    window.scroll(0, x);
+    x+=20;
 }
+
+function eliminarAnimacao(animacao){
+    clearInterval(animacao);
+    x=0;
+}
+
+// ! fim da animação de scroll
+
 
 
 let allEvents = {0: "onabort",
