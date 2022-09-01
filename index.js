@@ -2,6 +2,7 @@
 // ! animação de scroll
 let x = 0,
     animacao;
+
 function descer(local){
     animacao=setInterval(scrolar, 10, local);
 }
@@ -21,6 +22,10 @@ function eliminarAnimacao(animacao){
 }
 
 // ! fim da animação de scroll
+
+// ! abrir todos os modals
+
+let conteudos = {'singIn': {h1:{textContent: "Sing In", id:"modalSingIn", }, }}
 
 
 
