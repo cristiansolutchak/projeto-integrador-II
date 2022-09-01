@@ -342,7 +342,7 @@ function closeModal(){
     document.getElementById('externa').remove();
     document.getElementById('interna').remove();
     document.getElementById('modalBtn').remove();
-    document.body.classList = '';//scz
+    document.body.classList = '';
 }
 
 // ! fim da função fechar modals
