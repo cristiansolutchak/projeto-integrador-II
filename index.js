@@ -145,8 +145,163 @@ let modals = {'singIn': {
             }
         }
     },
+    'eolica': {
+        button:{
+            id: 'modalBtn',
+            textContent: 'X'
+        },
+        div: {
+            id: 'externa'
+        }, 
+        form:{
+            id: 'interna', 
+            method: 'POST',
+            action: 'index.php',
+            nodes: {
+                h1:{
+                    tag: 'h1',
+                    textContent: 'Energia eólica', 
+                    id:'modalEolica'
+                }, 
+                p1:{
+                    tag: 'p',
+                    textContent:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam debitis quas eos exercitationem consectetur quod veniam itaque fugiat inventore aliquam soluta, minus quaerat doloribus et neque beatae! Distinctio, temporibus voluptate.'
+                }, 
+                
+            }
+        }
+    },
+    'nuclear': {
+        button:{
+            id: 'modalBtn',
+            textContent: 'X'
+        },
+        div: {
+            id: 'externa'
+        }, 
+        form:{
+            id: 'interna', 
+            method: 'POST',
+            action: 'index.php',
+            nodes: {
+                h1:{
+                    tag: 'h1',
+                    textContent: 'Energia nuclear', 
+                    id:'modalEolica'
+                }, 
+                p1:{
+                    tag: 'p',
+                    textContent:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam debitis quas eos exercitationem consectetur quod veniam itaque fugiat inventore aliquam soluta, minus quaerat doloribus et neque beatae! Distinctio, temporibus voluptate.'
+                }, 
+                
+            }
+        }
+    },
+    'hidrelétrica': {
+        button:{
+            id: 'modalBtn',
+            textContent: 'X'
+        },
+        div: {
+            id: 'externa'
+        }, 
+        form:{
+            id: 'interna', 
+            method: 'POST',
+            action: 'index.php',
+            nodes: {
+                h1:{
+                    tag: 'h1',
+                    textContent: 'Energia hidrelétrica', 
+                    id:'modalEolica'
+                }, 
+                p1:{
+                    tag: 'p',
+                    textContent:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam debitis quas eos exercitationem consectetur quod veniam itaque fugiat inventore aliquam soluta, minus quaerat doloribus et neque beatae! Distinctio, temporibus voluptate.'
+                }, 
+                
+            }
+        }
+    },
+    'solar': {
+        button:{
+            id: 'modalBtn',
+            textContent: 'X'
+        },
+        div: {
+            id: 'externa'
+        }, 
+        form:{
+            id: 'interna', 
+            method: 'POST',
+            action: 'index.php',
+            nodes: {
+                h1:{
+                    tag: 'h1',
+                    textContent: 'Energia solar', 
+                    id:'modalEolica'
+                }, 
+                p1:{
+                    tag: 'p',
+                    textContent:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam debitis quas eos exercitationem consectetur quod veniam itaque fugiat inventore aliquam soluta, minus quaerat doloribus et neque beatae! Distinctio, temporibus voluptate.'
+                }, 
+                
+            }
+        }
+    },
+    'IA': {
+        button:{
+            id: 'modalBtn',
+            textContent: 'X'
+        },
+        div: {
+            id: 'externa'
+        }, 
+        form:{
+            id: 'interna', 
+            method: 'POST',
+            action: 'index.php',
+            nodes: {
+                h1:{
+                    tag: 'h1',
+                    textContent: 'Inteligência Artificial', 
+                    id:'modalEolica'
+                }, 
+                p1:{
+                    tag: 'p',
+                    textContent:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam debitis quas eos exercitationem consectetur quod veniam itaque fugiat inventore aliquam soluta, minus quaerat doloribus et neque beatae! Distinctio, temporibus voluptate.'
+                }, 
+                
+            }
+        }
+    },
+    'Matriz': {
+        button:{
+            id: 'modalBtn',
+            textContent: 'X'
+        },
+        div: {
+            id: 'externa'
+        }, 
+        form:{
+            id: 'interna', 
+            method: 'POST',
+            action: 'index.php',
+            nodes: {
+                h1:{
+                    tag: 'h1',
+                    textContent: 'Matrizes energéticas', 
+                    id:'modalEolica'
+                }, 
+                p1:{
+                    tag: 'p',
+                    textContent:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam debitis quas eos exercitationem consectetur quod veniam itaque fugiat inventore aliquam soluta, minus quaerat doloribus et neque beatae! Distinctio, temporibus voluptate.'
+                }, 
+                
+            }
+        }
+    },
 }
-
 function criarModal(tipo){
     tipo=modals[tipo];
     for(let tag in tipo){
@@ -181,15 +336,16 @@ function criarModal(tipo){
 
 // ! fim da função de abrir todos os modals
 
-// ! fexar modals
+// ! fechar modals
 
 function closeModal(){
     document.getElementById('externa').remove();
     document.getElementById('interna').remove();
     document.getElementById('modalBtn').remove();
-    document.body.classList = '';
+    document.body.classList = '';//scz
 }
 
+// ! fim da função fechar modals
 
 let allEvents = {0: 'onabort',
     1: 'onafterprint',
