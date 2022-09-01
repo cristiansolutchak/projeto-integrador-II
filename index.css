@@ -350,3 +350,33 @@
 
   /* ! alterações  */
 /* ? mdar ícone principal para inicialmente, uma lâmpada preta com IA branca, e quando o usuario clicar sobre ela, o site terá um tema escuro e a lâmpada será branca e o IA branco e vice versa */
+
+.semScroll{
+  overflow-y: hidden;
+}
+
+#externa{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(118, 118, 118, 0.75);
+  top: 0;
+}
+
+#modalBtn{
+  position: absolute;
+  top: 20%;
+  right: 20%;
+  background-color: red;
+  color: white;
+  z-index: 2;
+}
+
+#interna{
+  position: absolute;
+  top: 22%;
+  left: 20%;
+  width: 75%;
+  height: 85%;
+  background-color: white;
+}
