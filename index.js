@@ -156,16 +156,16 @@ function criarModal(tipo){
             for(let atributo in tipo[tag]){
                 if(atributo == 'nodes'){
                     let filhos = tipo[tag]['nodes']
-                    for(let local in filhos){
+                    for(let qual in filhos){
                         let x=0,
                             element;
-                        for(let subelemento in filhos[local]){
+                        for(let subelemento in filhos[qual]){
                             if(!x) {
-                                element = document.createElement(filhos[local][subelemento]);
+                                element = document.createElement(filhos[qual][subelemento]);
                                 x++
                             }
                             else{
-                                element[subelemento]=filhos[local][subelemento];
+                                element[subelemento]=filhos[qual][subelemento];
                             }
                         }
                         elemento.appendChild(element);
@@ -175,7 +175,8 @@ function criarModal(tipo){
         } 
         document.body.append(elemento);
     }
-    document.getElementById('modalBtn').setAttribute('onclick', 'closeModal()')
+    document.getElementById('modalBtn').setAttribute('onclick', 'closeModal()');
+    document.body.classList = 'semScroll';
 }
 
 // ! fim da função de abrir todos os modals
@@ -186,6 +187,7 @@ function closeModal(){
     document.getElementById('externa').remove();
     document.getElementById('interna').remove();
     document.getElementById('modalBtn').remove();
+    document.body.classList = '';
 }
 
 
