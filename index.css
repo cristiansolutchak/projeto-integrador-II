@@ -364,7 +364,7 @@ background-color: rgb(250, 248, 245);
 }
 
 #modalBtn{
-  position: absolute;
+  position: fixed;
   top: 20%;
   right: 20%;
   background-color: red;
@@ -373,7 +373,7 @@ background-color: rgb(250, 248, 245);
 }
 
 #interna{
-  position: absolute;
+  position: fixed;
   top: 22%;
   left: 20%;
   width: 75%;

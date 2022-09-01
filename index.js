@@ -275,7 +275,7 @@ let modals = {'singIn': {
             }
         }
     },
-    'Matriz': {
+    'matriz': {
         button:{
             id: 'modalBtn',
             textContent: 'X'
@@ -346,6 +346,16 @@ function closeModal(){
 }
 
 // ! fim da função fechar modals
+
+// ! 
+
+
+// ! função quiz
+
+function iniciarQuiz(){
+
+}
+
 
 let allEvents = {0: 'onabort',
     1: 'onafterprint',

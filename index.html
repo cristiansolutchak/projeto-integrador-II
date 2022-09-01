@@ -41,7 +41,7 @@
                         <p id="conteudo_ia"><!--Introdução IA-->
                             introdução IA. introdução IA. introdução IA. introdução IA. introdução IA. introdução IA. introdução IA. introdução IA. introdução IA. introdução IA. introdução IA. introdução IA. introdução IA. introdução IA. introdução IA.
                         </p>
-                        <button class="botao_saiba_mais_matrizes_e_ia" id="botao_matriz">SAIBA MAIS</button><!--Botão saiba mais-->
+                        <button class="botao_saiba_mais_matrizes_e_ia" id="botao_matriz" onclick="criarModal('IA')">SAIBA MAIS</button><!--Botão saiba mais-->
                     </div> 
                 </div>   
                     <img id="ia_boco2" src="img/IA.png" alt="Imagem ia"><!--Imagem IA-->
@@ -59,7 +59,7 @@
                         <p id="conteudo_matrizes"><!--Introdução Matrizes-->
                             Article evident arrived express highest men did boy. Mistress sensible entirely am so. Quick can manor smart money hopes worth too. Comfort produce husband boy her had hearing. Law others theirs passed but wishes. You day real less till dear read. 
                         </p>
-                        <button id="botao_matriz">Saiba mais</button><!--Botão saiba mais-->
+                        <button id="botao_matriz" onclick="criarModal('matriz')">Saiba mais</button><!--Botão saiba mais-->
                     </div> 
             </section>
 
@@ -77,7 +77,7 @@
                     <div><!-- div com titulo descrição e saiba mais -->
                         <h1 id="titulo_quiz">Testar seus conhecimentos</h1>
                         <p id="conteudo_quiz">Para testear seus conhecimentos adquiridos a cima, desenvolvemos um quiz com 3 perguntas rapidas e polemicas para você!</p>
-                        <button id="botao_quiz">TESTE</button>
+                        <button id="botao_quiz" onclick="iniciarQuiz()">TESTE</button>
                     </div>
                         <img id="imagem_quiz" src="img/quiz.webp" alt="Imagem QUIZ">
                 </div>
@@ -87,25 +87,25 @@
 
                 <h1 id="titulo_energias">Energias controladas por IA</h1>
 
-                <div class="cards" id="card1">
+                <div class="cards" id="card1" onclick="criarModal('eolica')">
                     <img id="imagem_cards" src="img/feed.png" alt="EOLICA">
                     <h1 id="titulos">EOLICA</h1>
                     <p id="conteudo_card">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
                     <button id="botao_card">Saiba mais</button>
                 </div>
-                <div class="cards" id="card2">
+                <div class="cards" id="card2" onclick="criarModal('nuclear')">
                     <img id="imagem_cards" src="img/feed.png" alt="NUCLEAR">
                     <h1 id="titulos">NUCLEAR</h1>
                     <p id="conteudo_card">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
                     <button id="botao_card">Saiba mais</button>
                 </div>
-                <div class="cards" id="card3">
+                <div class="cards" id="card3" onclick="criarModal('solar')">
                     <img id="imagem_cards" src="img/feed.png" alt="SOLAR">
                     <h1 id="titulos">SOLAR</h1>
                     <p id="conteudo_card">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
                     <button id="botao_card">Saiba mais</button>
                 </div>
-                <div class="cards" id="card4">
+                <div class="cards" id="card4" onclick="criarModal('hidrelétrica')">
                     <img id="imagem_cards" src="img/feed.png" alt="HIDRELÉTRICA">
                     <h1 id="titulos">HIDRELÉTRICA</h1>
                     <p id="conteudo_card">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
