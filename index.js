@@ -347,7 +347,32 @@ function closeModal(){
 
 // ! fim da função fechar modals
 
-// ! 
+// ! função mudar
+
+function mudar(elemento1, elemento2, elemento){
+    if(elemento1){
+        document.getElementById('item1').style.display = 'block';
+        document.getElementById('item2').style.display = 'none';
+        document.getElementById('item3').style.display = 'none';
+        document.getElementById('boton1').style.backgroundColor = 'red';
+        document.getElementById('boton2').style.backgroundColor = 'white';
+        document.getElementById('boton3').style.backgroundColor = 'white';
+    }else if(elemento2){
+        document.getElementById('item1').style.display = 'none'; 
+        document.getElementById('item2').style.display = 'block'; 
+        document.getElementById('item3').style.display = 'none';
+        document.getElementById('boton1').style.backgroundColor = 'white';
+        document.getElementById('boton2').style.backgroundColor = 'red';
+        document.getElementById('boton3').style.backgroundColor = 'white';
+    }else{
+        document.getElementById('item1').style.display = 'none'; 
+        document.getElementById('item2').style.display = 'none'; 
+        document.getElementById('item3').style.display = 'block';
+        document.getElementById('boton1').style.backgroundColor = 'white';
+        document.getElementById('boton2').style.backgroundColor = 'white';
+        document.getElementById('boton3').style.backgroundColor = 'red';
+    }
+}
 
 
 // ! função quiz
