@@ -399,20 +399,23 @@
   background-color: grey;
   color: white;
   z-index: 2;
+  opacity: 0;
 }
 
 #interna{
   position: fixed;
-  top: 60px;
-  left: 15%;
-  width: 70%;
-  height: 85%;
-  background-color: white;
+  width: 138.95px;
+  height: 44.4833px;
+  background-color: green;
   z-index: 1;
 }
 
 #interna > h1{
   text-align: center;
+}
+
+#interna > * {
+  opacity: 0;
 }
 
  #rodaroda{

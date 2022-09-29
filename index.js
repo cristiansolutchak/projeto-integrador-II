@@ -1,3 +1,25 @@
+/*
+const MODALS = [
+    'primeiro', 
+    'segundo', 
+    'terceiro'
+],
+    MODAL_ATIVO = 0;
+
+// tamanho do botão: w:138.95px h:44.4833
+    
+function animarModal(qual){
+    let id = MODALS[qual]+'Modal',
+        btn = document.getElementById(id)
+        local = {y:btn.offsetTop, x:btn.offsetLeft};
+    setInterval()
+    console.log()
+}
+
+
+
+*/
+
 'use strict'
 // ! animação de scroll
 let x = 0,
@@ -9,14 +31,14 @@ function descer(local){
 
 function scrolar(final){
     if(x===final+20) {
-        eliminarAnimacao(animacao);
+        eliminarAnimacao();
         return;
     }
     window.scroll(0, x);
     x+=20;
 }
 
-function eliminarAnimacao(animacao){
+function eliminarAnimacao(){
     clearInterval(animacao);
     x=0;
 }
@@ -25,314 +47,145 @@ function eliminarAnimacao(animacao){
 
 // ! abrir todos os modals
 
-let modals = {'singIn': {
-        button:{
-            id: 'modalBtn',
-            textContent: 'X'
-        },
-        div: {
-            id: 'externa'
-        }, 
-        form:{
-            id: 'interna', 
-            method: 'POST',
-            action: 'index.php',
-            nodes: {
-                h1:{
-                    tag: 'h1',
-                    textContent: 'Sing In', 
-                    id:'modalSingIn'
-                }, 
-                p1:{
-                    tag: 'p',
-                    textContent:'Email'
-                }, 
-                input1: {
-                    tag: 'input',
-                    type:'email', 
-                    id: 'email',
-                    placeholder: 'digite aqui seu email'
-                },
-                p2: {
-                    tag: 'p',
-                    textContent: 'Senha'
-                },
-                input2: {
-                    tag: 'input',
-                    type:'text', 
-                    id: 'senha',
-                    placeholder: 'digite aqui sua senha'
-                },
-                p3: {
-                    tag: 'p',
-                    innerHTML: 'Ainda não possui conta? <a onclick="limpar();criarModal(\'singUp\')">crie uma</a>!'
-                },
-                input3: {
-                    tag: 'input',
-                    type: 'submit',
-                    value: 'conectar-se'
-                }
-            }
-        }
-    },
-    'singUp':{
-        button:{
-            id: 'modalBtn',
-            textContent: 'X'
-        },
-        div: {
-            id: 'externa'
-        }, 
-        form:{
-            id: 'interna', 
-            method: 'POST',
-            action: 'index.php',
-            nodes: {
-                h1:{
-                    tag: 'h1',
-                    textContent: 'Sing Up', 
-                    id:'modalSingUp'
-                }, 
-                p1:{
-                    tag: 'p',
-                    textContent:'nome'
-                }, 
-                input1: {
-                    tag: 'input',
-                    type:'text', 
-                    id: 'nome',
-                    placeholder: 'digite aqui seu nome'
-                },
-                p2:{
-                    tag: 'p',
-                    textContent:'Email'
-                }, 
-                input2: {
-                    tag: 'input',
-                    type:'email', 
-                    id: 'email',
-                    placeholder: 'digite aqui seu email'
-                },
-                p3: {
-                    tag: 'p',
-                    textContent: 'Senha'
-                },
-                input3: {
-                    tag: 'input',
-                    type:'text', 
-                    id: 'senha1',
-                    placeholder: 'digite aqui sua senha'
-                },
-                p4: {
-                    tag: 'p',
-                    textContent: 'Verificar senha'
-                },
-                input4: {
-                    tag: 'input',
-                    type:'text', 
-                    id: 'senha2',
-                    placeholder: 'confirme aqui sua senha'
-                },
-                p5: {
-                    tag: 'p',
-                    innerHTML: 'Ainda não possui conta? <a onclick="limpar();criarModal(\'singUp\')">crie uma</a>!'
-                },
-                input5: {
-                    tag: 'input',
-                    type: 'submit',
-                    value: 'conectar-se'
-                }
-            }
-        }
-    },
-    'eolica': {
-        button:{
-            id: 'modalBtn',
-            textContent: 'X'
-        },
-        div: {
-            id: 'externa'
-        }, 
-        form:{
-            id: 'interna', 
-            method: 'POST',
-            action: 'index.php',
-            nodes: {
-                h1:{
-                    tag: 'h1',
-                    textContent: 'Energia eólica', 
-                    id:'modalEolica'
-                }, 
-                p1:{
-                    tag: 'p',
-                    textContent:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam debitis quas eos exercitationem consectetur quod veniam itaque fugiat inventore aliquam soluta, minus quaerat doloribus et neque beatae! Distinctio, temporibus voluptate.'
-                }, 
-                
-            }
-        }
-    },
-    'nuclear': {
-        button:{
-            id: 'modalBtn',
-            textContent: 'X'
-        },
-        div: {
-            id: 'externa'
-        }, 
-        form:{
-            id: 'interna', 
-            method: 'POST',
-            action: 'index.php',
-            nodes: {
-                h1:{
-                    tag: 'h1',
-                    textContent: 'Energia nuclear', 
-                    id:'modalEolica'
-                }, 
-                p1:{
-                    tag: 'p',
-                    textContent:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam debitis quas eos exercitationem consectetur quod veniam itaque fugiat inventore aliquam soluta, minus quaerat doloribus et neque beatae! Distinctio, temporibus voluptate.'
-                }, 
-                
-            }
-        }
-    },
-    'hidrelétrica': {
-        button:{
-            id: 'modalBtn',
-            textContent: 'X'
-        },
-        div: {
-            id: 'externa'
-        }, 
-        form:{
-            id: 'interna', 
-            method: 'POST',
-            action: 'index.php',
-            nodes: {
-                h1:{
-                    tag: 'h1',
-                    textContent: 'Energia hidrelétrica', 
-                    id:'modalEolica'
-                }, 
-                p1:{
-                    tag: 'p',
-                    textContent:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam debitis quas eos exercitationem consectetur quod veniam itaque fugiat inventore aliquam soluta, minus quaerat doloribus et neque beatae! Distinctio, temporibus voluptate.'
-                }, 
-                
-            }
-        }
-    },
-    'solar': {
-        button:{
-            id: 'modalBtn',
-            textContent: 'X'
-        },
-        div: {
-            id: 'externa'
-        }, 
-        form:{
-            id: 'interna', 
-            method: 'POST',
-            action: 'index.php',
-            nodes: {
-                h1:{
-                    tag: 'h1',
-                    textContent: 'Energia solar', 
-                    id:'modalEolica'
-                }, 
-                p1:{
-                    tag: 'p',
-                    textContent:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam debitis quas eos exercitationem consectetur quod veniam itaque fugiat inventore aliquam soluta, minus quaerat doloribus et neque beatae! Distinctio, temporibus voluptate.'
-                }, 
-                
-            }
-        }
-    },
-    'IA': {
-        button:{
-            id: 'modalBtn',
-            textContent: 'X'
-        },
-        div: {
-            id: 'externa'
-        }, 
-        form:{
-            id: 'interna', 
-            method: 'POST',
-            action: 'index.php',
-            nodes: {
-                h1:{
-                    tag: 'h1',
-                    textContent: 'Inteligência Artificial', 
-                    id:'modalEolica'
-                }, 
-                p1:{
-                    tag: 'p',
-                    textContent:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam debitis quas eos exercitationem consectetur quod veniam itaque fugiat inventore aliquam soluta, minus quaerat doloribus et neque beatae! Distinctio, temporibus voluptate.'
-                }, 
-                
-            }
-        }
-    },
-    'matriz': {
-        button:{
-            id: 'modalBtn',
-            textContent: 'X'
-        },
-        div: {
-            id: 'externa'
-        }, 
-        form:{
-            id: 'interna', 
-            method: 'POST',
-            action: 'index.php',
-            nodes: {
-                h1:{
-                    tag: 'h1',
-                    textContent: 'Matrizes energéticas', 
-                    id:'modalEolica'
-                }, 
-                p1:{
-                    tag: 'p',
-                    textContent:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam debitis quas eos exercitationem consectetur quod veniam itaque fugiat inventore aliquam soluta, minus quaerat doloribus et neque beatae! Distinctio, temporibus voluptate.'
-                }, 
-                
-            }
-        }
-    },
+let modals = {
+    'singIn': "<button id='modalBtn'>x</button>\
+              <div id='externa'></div>\
+              <form id='interna' method='POST' action='index.php'>\
+                  <h1 id='modalSingUp'>Sing Up</h1>\
+                  <p>nome</p>\
+                  <input placeholder='digite aqui seu nome' type='text' id='nome'>\
+                  <p>Email</p>\
+                  <input placeholder='digite aqui seu email' type='email' id='email'>\
+                  <p>Senha</p>\
+                  <input placeholder='digite aqui sua senha' type='text' id='senha1'>\
+                  <p>Verificar senha</p>\
+                  <input placeholder='confirme aqui sua senha' type='text' id='senha2'>\
+                  <input value='conectar-se' type='submit'>\
+              </form>",
+    'singUp': "<button id='modalBtn'>x</button>\
+               <div id='externa'></div>\
+               <form id='interna' method='POST' action='index.php'>\
+                   <h1 id='modalSingUp'>Sing Up</h1>\
+                   <p>nome</p>\
+                   <input placeholder='digite aqui seu nome' type='text' id='nome'>\
+                   <p>Email</p>\
+                   <input placeholder='digite aqui seu email' type='email' id='email'>\
+                   <p>Senha</p>\
+                   <input placeholder='digite aqui sua senha' type='text' id='senha1'>\
+                   <p>Verificar senha</p>\
+                   <input placeholder='confirme aqui sua senha' type='text' id='senha2'>\
+                   <input value='conectar-se' type='submit'>\
+               </form>",
+    'IA': "<button id='modalBtn'>x</button>\
+            <div id='externa'></div>\
+            <form id='interna' method='POST' action='index.php'>\
+                <h1 id='modalIA'>Inteligência Artificial</h1>\
+                <p>\
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam debitis quas eos exercitationem consectetur quod veniam itaque fugiat inventore aliquam soluta, minus quaerat doloribus et neque beatae! Distinctio, temporibus voluptate.\
+                </p>\
+            </form>", 
+    'matriz': "<button id='modalBtn'>x</button>\
+               <div id='externa'></div>\
+               <form id='interna' method='POST' action='index.php'>\
+                   <h1 id='modalMatrize'>Matrizes energéticas</h1>\
+                   <p>\
+                       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam debitis quas eos exercitationem consectetur quod veniam itaque fugiat inventore aliquam soluta, minus quaerat doloribus et neque beatae! Distinctio, temporibus voluptate.\
+                   </p>\
+               </form>",
+    "quiz":'',
+    'eolica': "<button id='modalBtn'>x</button>\
+               <div id='externa'></div>\
+               <form id='interna' method='POST' action='index.php'>\
+                   <h1 id='modalEolica'>Energia eolica</h1>\
+                   <p>\
+                       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam debitis quas eos exercitationem consectetur quod veniam itaque fugiat inventore aliquam soluta, minus quaerat doloribus et neque beatae! Distinctio, temporibus voluptate.\
+                   </p>\
+               </form>",
+    'nuclear': "<button id='modalBtn'>x</button>\
+                <div id='externa'></div>\
+                <form id='interna' method='POST' action='index.php'>\
+                    <h1 id='modalNuclear'>Energia nuclear</h1>\
+                    <p>\
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam debitis quas eos exercitationem consectetur quod veniam itaque fugiat inventore aliquam soluta, minus quaerat doloribus et neque beatae! Distinctio, temporibus voluptate.\
+                    </p>\
+                </form>",
+    'hidrelétrica': "<button id='modalBtn'>x</button>\
+                     <div id='externa'></div>\
+                     <form id='interna' method='POST' action='index.php'>\
+                         <h1 id='modalHidreletrica'>Energia hidrelétrica</h1>\
+                         <p>\
+                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam debitis quas eos exercitationem consectetur quod veniam itaque fugiat inventore aliquam soluta, minus quaerat doloribus et neque beatae! Distinctio, temporibus voluptate.\
+                         </p>\
+                     </form>",
+    'solar': "<button id='modalBtn'>x</button>\
+              <div id='externa'></div>\
+              <form id='interna' method='POST' action='index.php'>\
+                  <h1 id='modalSolar'>Energia solar</h1>\
+                  <p>\
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam debitis quas eos exercitationem consectetur quod veniam itaque fugiat inventore aliquam soluta, minus quaerat doloribus et neque beatae! Distinctio, temporibus voluptate.\
+                  </p>\
+              </form>",
 }
+
+const CONTENT=document.body.innerHTML;
+let scrolAtual,
+    id1,
+    id2,
+    contador1 = 0,
+    contador2 = 0,
+    interna;
+
 function criarModal(tipo){
-    tipo=modals[tipo];
-    for(let tag in tipo){
-        let elemento=document.createElement(tag);
-        elemento.id=tipo[tag].id;
-        if(!(tag=='div')){
-            for(let atributo in tipo[tag]){
-                if(atributo == 'nodes'){
-                    let filhos = tipo[tag]['nodes']
-                    for(let qual in filhos){
-                        let x=0,
-                            element;
-                        for(let subelemento in filhos[qual]){
-                            if(!x) {
-                                element = document.createElement(filhos[qual][subelemento]);
-                                x++
-                            }
-                            else{
-                                element[subelemento]=filhos[qual][subelemento];
-                            }
-                        }
-                        elemento.appendChild(element);
-                    }
-                }else elemento[atributo] = tipo[tag][atributo]
-            }
-        } 
-        document.body.append(elemento);
+    atualizarPosicoes()
+    document.body.innerHTML=CONTENT+modals[tipo];
+    let qual=0;
+    for(let i in modals){
+        if(i==tipo) break;
+        qual++;
     }
+    interna = document.getElementById('interna')
+    colocarDiv(posicoes[qual]);
+    id1 = setInterval(ajustarModal, 1, {parteX: (screen.availWidth*0.2 - interna.offsetLeft)/200, parteY: (screen.availHeight*0.2-interna.offsetTop)/200})
+    id2 = setInterval(animarModal, 1, {parteX: (screen.availWidth*0.8 - document.getElementById('interna').clientWidth)/500, parteY: (screen.availHeight*0.8 - document.getElementById('interna').clientHeight)/500}, );
     document.getElementById('modalBtn').setAttribute('onclick', 'closeModal()');
     document.body.classList = 'semScroll';
 }
+
+
+function colocarDiv(local){
+    interna.style.top = local.y + 'px';
+    interna.style.left = local.x + 'px';
+}
+
+
+const posicoes = [];
+
+function animarModal(dados){
+    if(contador1++===500)pararIntervalo('c1');
+    interna.style.width = interna.clientWidth + dados.parteX + 'px';
+    interna.style.height = interna.clientHeight + dados.parteY + 'px';
+    
+}
+
+function ajustarModal(dados){
+    if(contador2++===200)pararIntervalo('c2');
+    interna.style.top = interna.offsetTop + dados.parteX + 'px';
+    interna.style.left = interna.offsetLeft + dados.parteY + 'px';
+}
+
+
+function pararIntervalo(qual){
+    
+    if(qual=='c1'){
+        contador1 = 0;
+        clearInterval(id1);
+    }
+    else{
+        contador2 = 0;
+        clearInterval(id2);
+    }
+}
+
 
 // ! fim da função de abrir todos os modals
 
@@ -350,144 +203,42 @@ function closeModal(){
 // ! função mudar
 
 function mudar(elemento1, elemento2){
+    let item1 = document.getElementById('item1'),
+        item2 = document.getElementById('item2'),
+        item3 = document.getElementById('item3'),
+        btn1 = document.getElementById('boton1'),
+        btn2 = document.getElementById('boton2'),
+        btn3 = document.getElementById('boton3');
     if(elemento1){
-        document.getElementById('item1').style.display = 'block';
-        document.getElementById('item2').style.display = 'none';
-        document.getElementById('item3').style.display = 'none';
-        document.getElementById('boton1').style.backgroundColor = 'red';
-        document.getElementById('boton2').style.backgroundColor = 'white';
-        document.getElementById('boton3').style.backgroundColor = 'white';
+        item1.style.display = 'block';
+        item2.style.display = 'none';
+        item3.style.display = 'none';
+        btn1.style.backgroundColor = 'red';
+        btn2.style.backgroundColor = 'white';
+        btn3.style.backgroundColor = 'white';
     }else if(elemento2){
-        document.getElementById('item1').style.display = 'none'; 
-        document.getElementById('item2').style.display = 'block'; 
-        document.getElementById('item3').style.display = 'none';
-        document.getElementById('boton1').style.backgroundColor = 'white';
-        document.getElementById('boton2').style.backgroundColor = 'red';
-        document.getElementById('boton3').style.backgroundColor = 'white';
+        item1.style.display = 'none'; 
+        item2.style.display = 'block'; 
+        item3.style.display = 'none';
+        btn1.style.backgroundColor = 'white';
+        btn2.style.backgroundColor = 'red';
+        btn3.style.backgroundColor = 'white';
     }else{
-        document.getElementById('item1').style.display = 'none'; 
-        document.getElementById('item2').style.display = 'none'; 
-        document.getElementById('item3').style.display = 'block';
-        document.getElementById('boton1').style.backgroundColor = 'white';
-        document.getElementById('boton2').style.backgroundColor = 'white';
-        document.getElementById('boton3').style.backgroundColor = 'red';
+        item1.style.display = 'none'; 
+        item2.style.display = 'none'; 
+        item3.style.display = 'block';
+        btn1.style.backgroundColor = 'white';
+        btn2.style.backgroundColor = 'white';
+        btn3.style.backgroundColor = 'red';
     }
 }
 
 
-// ! função quiz
-
-let allEvents = {0: 'onabort',
-    1: 'onafterprint',
-    2: 'onanimationend',
-    3: 'onanimationiteration',
-    4: 'onanimationstart',
-    5: 'onappinstalled',
-    6: 'onauxclick',
-    7: 'onbeforeinstallprompt',
-    8: 'onbeforematch',
-    9: 'onbeforeprint',
-    10: 'onbeforeunload',
-    11: 'onbeforexrselect',
-    12: 'onblur',
-    13: 'oncancel',
-    14: 'oncanplay',
-    15: 'oncanplaythrough',
-    16: 'onchange',
-    17: 'onclick',
-    18: 'onclose',
-    19: 'oncontextlost',
-    20: 'oncontextmenu',
-    21: 'oncontextrestored',
-    22: 'oncuechange',
-    23: 'ondblclick',
-    24: 'ondevicemotion',
-    25: 'ondeviceorientation',
-    26: 'ondeviceorientationabsolute',
-    27: 'ondrag',
-    28: 'ondragend',
-    29: 'ondragenter',
-    30: 'ondragleave',
-    31: 'ondragover',
-    32: 'ondragstart',
-    33: 'ondrop',
-    34: 'ondurationchange',
-    35: 'onemptied',
-    36: 'onended',
-    37: 'onerror',
-    38: 'onfocus',
-    39: 'onformdata',
-    40: 'ongotpointercapture',
-    41: 'onhashchange',
-    42: 'oninput',
-    43: 'oninvalid',
-    44: 'onkeydown',
-    45: 'onkeypress',
-    46: 'onkeyup',
-    47: 'onlanguagechange',
-    48: 'onload',
-    49: 'onloadeddata',
-    50: 'onloadedmetadata',
-    51: 'onloadstart',
-    52: 'onlostpointercapture',
-    53: 'onmessage',
-    54: 'onmessageerror',
-    55: 'onmousedown',
-    56: 'onmouseenter',
-    57: 'onmouseleave',
-    58: 'onmousemove',
-    59: 'onmouseout',
-    60: 'onmouseover',
-    61: 'onmouseup',
-    62: 'onmousewheel',
-    63: 'onoffline',
-    64: 'ononline',
-    65: 'onpagehide',
-    66: 'onpageshow',
-    67: 'onpause',
-    68: 'onplay',
-    69: 'onplaying',
-    70: 'onpointercancel',
-    71: 'onpointerdown',
-    72: 'onpointerenter',
-    73: 'onpointerleave',
-    74: 'onpointermove',
-    75: 'onpointerout',
-    76: 'onpointerover',
-    77: 'onpointerrawupdate',
-    78: 'onpointerup',
-    79: 'onpopstate',
-    80: 'onprogress',
-    81: 'onratechange',
-    82: 'onrejectionhandled',
-    83: 'onreset',
-    84: 'onresize',
-    85: 'onscroll',
-    86: 'onsearch',
-    87: 'onsecuritypolicyviolation',
-    88: 'onseeked',
-    89: 'onseeking',
-    90: 'onselect',
-    91: 'onselectionchange',
-    92: 'onselectstart',
-    93: 'onslotchange',
-    94: 'onstalled',
-    95: 'onstorage',
-    96: 'onsubmit',
-    97: 'onsuspend',
-    98: 'ontimeupdate',
-    99: 'ontoggle',
-    100: 'ontransitioncancel',
-    101: 'ontransitionend',
-    102: 'ontransitionrun',
-    103: 'ontransitionstart',
-    104: 'onunhandledrejection',
-    105: 'onunload',
-    106: 'onvolumechange',
-    107: 'onwaiting',
-    108: 'onwebkitanimationend',
-    109: 'onwebkitanimationiteration',
-    110: 'onwebkitanimationstart',
-    111: 'onwebkittransitionend',
-    112: 'onwheel',
+function atualizarPosicoes(){
+    let x = 0,
+        elementos = ['sing_in', 'sing_up', 'botao_ia', 'botao_matriz', 'botao_quiz', 'card1', 'card2', 'card3', 'card4']
+    for(let i of elementos){
+        let elemento = document.getElementById(i)
+        posicoes[x++] = elemento.getBoundingClientRect()
+    }
 }
