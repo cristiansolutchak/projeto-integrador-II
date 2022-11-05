@@ -1,0 +1,505 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap');
+body{
+  margin: 0;
+  padding: 0;
+  background-color: rgb(250, 248, 245);
+}
+
+#nav{
+  width: 100%;
+  height: 720px;
+  background-image: linear-gradient( to bottom, #4a96d4, #f8f0f0 );
+}
+
+#logo_site{
+  width: 60px;
+  display: flex;
+  padding-top: 50px;
+  padding-left: 250px;
+  position: absolute;
+}
+
+.links_navbar{
+  padding-left: 60%;
+  padding-top: 60px;
+  
+}
+
+.links_navbar > a:hover{
+  color: rgb(98, 98, 98);
+  transition: 0.5s;
+}
+
+.links_navbar > a{
+  padding-left: 15px;
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#content{
+  position: absolute;
+  top: 25%;
+  left: 15%;
+  margin-left: 5%;
+  width: 58%;
+}
+
+#content > h1{
+  margin-top: -350px;
+  margin-left: -50px;
+  color: white;
+  width: 42%;
+}
+
+#content > p{
+  color:white;
+  width: 48%;
+  margin-left: -50px; 
+}
+
+#content > button{
+  color: lightblue;
+  background-color: white;
+  font-size: 18px;
+  border: none;
+  width: 180px;
+  height: 50px;
+  display: inline-block;
+  border-radius: 50px;
+  margin-left: -50px;
+  margin-top: 120px;
+}
+#botao_saiba_mais_introducao_site:hover{
+  transition: 0.5s;
+  background-color: rgb(227, 227, 238);
+  font-size: larger;
+  color: #4a96d4;
+  width: 200px;
+  height: 60px;
+}
+
+#botao_saiba_mais_introducao_site:not(:hover){
+  transition: 0.5s;
+  background-color: rgb(227, 227, 238);
+  font-size: larger;
+  color: #4a96d4;
+  width: 180px;
+  height: 50px;
+}
+
+#content > img{
+  position: absolute;
+  display: block;
+  float: right;
+  width: 200px;
+  margin-top: 50px;
+  margin-left: 67%;
+}
+
+#circulo {
+  background: lightblue;
+  border-radius: 50%;
+  width: 400px;
+  height: 400px;
+  margin-top: -20px;
+  margin-left: 70%;
+}
+
+/*           iaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa  */
+#introdução_ia{
+  width: 100%;
+  height: 720px;
+  background-color: #ffffff;
+}
+
+#bolco_ia{
+  width: 30%;
+  height: 400px;
+  background-color: #ebe3e3;
+  position: absolute;
+  margin-top: 160px;
+  margin-left: 228px;
+}
+
+#titulo_ia{
+  width: 100px;
+  background-color: rgb(120, 20, 207);
+  margin-left: 20px;
+  margin-top: -50px;
+  font-size: 90px;
+}
+#conteudo_ia{
+  width: 300px;
+  height: 150px;
+  text-align: right;
+  margin-left: 130px;
+}
+
+#botao_ia{
+  border:solid 1px black;
+  width: 130px;
+  height: 40px;
+  margin-left: 300px;
+}
+
+#ia_boco2{
+  width: 30%;
+  height: 400px;
+  margin-top: 160px;
+  margin-left: 778px;
+  position: absolute;
+}
+
+
+  /*           iaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa  */
+
+#introducao_matrizes{
+  width: 100%;
+  height: 720px;
+  background-color: #ffffff;
+}
+#matriz_boco1{
+  width: 30%;
+  height: 400px;
+  margin-top: 160px;
+  margin-left: 228px;
+  position: absolute;
+}
+
+#conteudo_matrizes{
+  width: 300px;
+  height: 150px;
+  text-align: right;
+  margin-left: 130px;
+}
+
+#botao_matriz{
+  border:solid 1px black;
+  width: 130px;
+  height: 40px;
+  margin-left: 300px;
+}
+
+#titulo_matrizes{
+  width: 475px;
+  background-color: rgb(120, 20, 207);
+  margin-left: 65px;
+  margin-top: -50px;
+  font-size: 90px;
+}
+#bolco_matriz{
+  width: 30%;
+  height: 400px;
+  background-color: #ebe3e3;
+  position: absolute;
+  margin-top: 160px;
+  margin-left: 778px;
+}
+
+#botao_matriz:hover,#botao_ia:hover{
+  transition: 0.5s;
+  border:solid 1px black;
+  width: 140px;
+  height: 45px;
+  margin-left: 300px;
+}
+
+#botao_matriz:not(:hover),#botao_ia:not(:hover){
+  transition: 0.5s;
+  border:solid 1px black;
+  width: 130px;
+  height: 40px;
+  margin-left: 300px;
+}
+
+  /*           iaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa  */
+
+  #botns{
+  width: 100%;
+  height: 720px;
+  background-color: #ffffff;
+  }
+
+  #boton1, #boton2, #boton3{
+  background-color: #ffffff;
+  font-size: 25px;
+  border: solid 4px #000000;
+  border-style: solid solid none solid ;
+  margin-left: -6px;
+  cursor: pointer;
+  }
+
+  #boton1{
+  margin-left: 220px;
+  margin-top: 50px;
+  background-color: red;
+  }
+
+  
+
+/*           iaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa  */
+
+#quiz{
+  width: 100%;
+  height: 720px;
+  background-color: #ffffff;
+}
+
+#bloco_quiz{
+  width: 30%;
+  height: 400px;
+  background-color: #ffffff;
+  position: absolute;
+  margin-left: 228px;
+}
+
+#titulo_quiz{
+  font-size: 50px;
+}
+
+#conteudo_quiz{
+  font-size: 25px;
+  padding-top: 5px;
+  padding-bottom: 40px;
+  line-height: 38px;
+}
+
+#botao_quiz{
+  border-radius: 55px;
+  font-size: 15px;
+  width: 150px;
+  padding: 22px;
+  background-color: #ffffff;
+  border: solid 2px rgb(77, 218, 240);
+  letter-spacing: 4px;
+}
+
+#botao_quiz:hover{
+  transition: 0.3s;
+  background-color: #49a0ec;
+  border: solid 2px rgb(0, 0, 0);
+  color:white;
+}
+
+
+#imagem_quiz{
+  width: 700px;
+  height: 550px;
+  margin-top: -500px;
+  margin-left: 500px;
+  position: absolute;
+}
+
+#pag_card{
+  width: 100%;
+  height: 720px;
+  background-image: linear-gradient( to bottom, #ffffff, #4494d6);
+}
+
+.cards{
+  border-radius: 25px;
+  background-color: rgb(237, 228, 228);
+  width: 260px;
+  height: 350px;
+  position: absolute;
+  box-shadow: 10px 10px 5px 1px rgba(0, 0, 0, 0.3);
+}
+
+#card1{
+  margin-left: 220px;
+  margin-top: 200px;
+}
+#card2{
+  margin-left: 500px;
+  margin-top: 200px;
+}
+#card3{
+  margin-left: 780px;
+  margin-top: 200px;
+}
+#card4{
+  margin-left: 1060px;
+  margin-top: 200px;
+}
+
+#titulos{
+  margin-top: 30px;
+  text-align: center;
+}
+
+#conteudo_card{
+  text-align: center;
+  width: 235px;
+  padding-left: 10.5px;
+}
+
+#botao_card{
+  margin-top: 40px;
+  margin-left: 80px;
+  padding: 15px;
+  background-color: rgb(237, 228, 228) ;
+  border: solid 2px #4494d6;
+  border-style: none none solid none;
+  padding-bottom: 2px;
+}
+
+#titulo_energias{
+  position: absolute;
+  margin-top: 100px;
+  margin-left: 220px;
+  font-size: 40px;
+}
+
+#imagem_cards{
+  margin-left: 98px;
+  margin-top: 30px;
+}
+
+
+
+ 
+
+
+
+  /* ! alterações  */
+/* ? mdar ícone principal para inicialmente, uma lâmpada preta com IA branca, e quando o usuario clicar sobre ela, o site terá um tema escuro e a lâmpada será branca e o IA branco e vice versa */
+
+.semScroll{
+  overflow-y: hidden;
+}
+
+#externa{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(118, 118, 118, 0.75);
+  top: 0;
+}
+
+#modalBtn{
+  position: fixed;
+  top: 7%;
+  right: 15%;
+  background-color: grey;
+  color: white;
+  z-index: 2;
+  opacity: 0;
+}
+
+#interna{
+  position: fixed;
+  width: 138.95px;
+  height: 44.4833px;
+  background-color: white;
+  border: 1.5px black solid;
+  z-index: 1;
+}
+
+#interna > h1{
+  text-align: center;
+}
+
+#interna > * {
+  opacity: 0;
+}
+
+#rodaroda{
+  background-color: #1f1c1c;
+  width: 100%;
+  height: 350px;
+}
+ 
+#contatos{
+  margin-left: 10px;
+  width: 25px;
+  height: 25px;
+}
+
+#links_contato{
+  margin-top: -90px;
+  margin-left: 1230px;
+}
+
+#creditos{
+  margin-left: 720px;
+}
+
+#comentarios{
+  position: absolute;
+  margin-left: 292px;
+  margin-top: 40px;
+  border-radius: 5px;
+  width: 350px;
+  height: 50px;
+  background-color: #0c0c0c;
+  color: white;
+}
+
+#imagem_logo_roda_pe{
+  margin-top: 150px;
+  margin-left: 220px;
+  width: 60px;
+  height: 60px;
+}
+
+#imagem_usuario{
+  margin-top: 40px;
+  margin-left: 220px;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+}
+.escondido{
+  display: none;
+}
+
+.ajustarModal{
+  animation: ajustarModal 1s;
+}
+
+.abrirModal{
+  animation: abrirModals 1s;
+}
+
+.modalAberto{
+  top: var(--posicaoFinalY) !important;
+  left: var(--posicaoFinalX) !important;
+  width: 85% !important; 
+  height: 80% !important;
+}
+
+.mostrarItens > *{
+  animation: mostrarItens 1s;
+}
+
+.mostrarItem > *{
+  opacity: 1 !important;
+}
+
+
+@keyframes ajustarModal {
+  to{
+    top: var(--posicaoFinalY);
+    left: var(--posicaoFinalX);
+  }
+}
+
+@keyframes abrirModals {
+  from{
+    top: var(--posicaoFinalY);
+    left: var(--posicaoFinalX);
+  } to {
+    top: var(--posicaoFinalY);
+    left: var(--posicaoFinalX);
+    width: 85%;
+    height: 80%;
+  }
+}
+
+@keyframes mostrarItens{
+  to{
+    opacity: 1;
+  }
+}
