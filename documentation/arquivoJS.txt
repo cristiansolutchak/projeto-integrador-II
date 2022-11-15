@@ -1,0 +1,37 @@
+O arquivo js está disposto entre //!, difinindo 'blocos' que as funções e suas dependências estarão, isto é apenas visual e é usado para maior organização, também foi utilizamos da ferramenta jquery para facilitar o uso da ferramenta AJAX, para não recaregar a página ao submeter um comentário e para encurtar os seletores
+
+/static/js/index.js{
+    Inicialmente declaramos o modo restrito, usando a string "use strict", impedindo declarações de variáveis sem um declarador let ou const.
+    Bloco controle de saves:
+        Resumo:
+            Bloco responsável de cuidar dos saves no localStorage do site apenas quando ele entra no site, caso anteriormente ele tenha tentado enviar mais de 3 comentarios em um intevalo de tempo menor de 10 minutos, ele é impedido de enviar mais mensages, essa informação fica salva no localStorage do site, essa ação é necessária para impedir que o usuário entre no site, envie 3 mensagens em um curto periodo de intervalo e recaregue a página e repita esse processo novamente.
+        Passo a passo:
+            inicialmente criamos a função limparIntervalo que recebe como parâmetro o id do intervalo para limpar, esta ação é realizada com a chamada da função clearInterval(id). depois declaramos as variáveis: envios - que conterá a quantidade de envios feitos pelo usuário -, intervalo - tempo que o usuário será impedido de enviar mais comentários -, intervaloId - variável que conterá o id do timer - e data - instância da classe Date, usado apenas para pegar o horário atual em segundos-, logo após, comparamos se na variável intervalo do localStorage existe um valor diferente de null, caso verdadeiro, declaramos uma variavel intervalo que receberá o valor do horário atual subtraido do horário salvo no localStorage que consiste no horário do bloqueio mais 10 minutos, e caso o intervalo seja maior que 0, (ntão definimos o número de envios igual a 3 - usado na função salvar - e criamos um setInterval em que o id retornada por ela é atribuido a variável intervaloId e ela recebe uma função seta em que a cada 1000 milisegundos - 1 segundo - é diminuido o valor de intervalo em 1 e caso o intervalo seja igual a 0, é chamada a função limparIntervalo), caso o intervalo seja menor de 0, (emovemos o intervalo do localStorage).
+    Bloco save com ajax:
+        resumo:
+            Bloco responsável por enviar os dados do formulário de comentário para o banco de dados sem haver refresh da página, com o uso da ferramenta ajax, 
+        Passo a passo:
+            Inicialmente declaramos a função salvar, que não recebe nenhum parâmetro, após isso comparamos, caso o número de envios seja 3, ( elemento cujo id seja resposta, recebera o html "muitos envios em um curto entervalo de tempo"), caso contrário, (comparamos se todos os campos estiverem preenchidos, [enviamos enviamos um ajax do tipo get, com a url sendo '' - que referencia o arquivo index, ou seja, a função index no arquivo app.py -, com a data - dados que serão enviados sendo um objeto contendo o nome, email e o comentário informado pelo usuário -, um dataType sendo application/json e um beforeSend - que será a função chamada após enviar o AJAX- e enviamos uma função seta responsável por colocar o html "Enviando mensagem..." no elemento cujo id seja resposta. Após enviar o ajax captamos a falha do envio do AJAX com o método fail, - ao enviar o AJAX, por algum motivo desconhecido sempre ocorria um erro, portanto optamos por usar apenas o método fail e não os metodos fail e done -, o método fail receberá uma função seta com o parâmetro dados - contendo os dados do AJAX -, nela comparamos se o status do envio for 200 - que significa sucesso -, coso verdadeiro,  incrementamos o número de envios em 1 e no elemento cujo id seja igual a resposta colocamos a html "Mensagem enviada com sucesso!", caso contrário colocamos o html "Erro ao enviar a mensagem!".], caso contrário, [verificamos caso o campo nome esteja vazio e colocamos no elemento com o id resposta o html 'Insira seu nome antes de enviar sua mensagem!', caso o email esteja vazio e colocamos o html 'Insira seu email antes de enviar sua mensagem!' senão, colocamos o html 'Insira seu comentário antes de enviar sua mensagem!']), após isso comparamos se o número de envios é igual a 3, (definimos o intervalo como 600 - 10 minutos - e a cada segundo deminuimos o valor do intervalo em 1 por meio de um set interval que quando o intervalo chegue a 0, ele chama a função limparIntervalo).
+    base:
+    Bloco animação de scroll:
+        resumo:
+            Bloco responsável por suavizar o scroll da página ao clicar em um dos itens da barra de navegação.
+        Passo a passo:
+            Inicialmente declaramos as variáveis y - contem a altura atual da página presupondo que ela estará no topo - e definimos a variável animacaoId - receberá o id do setInterval -. Após isso declaramos a função descer que recebe como parâmetro o local - consiste no id do elemento que é 'direcionado' o scroll -, quando obtido os dados, declaramos um set interval que chamará a função scrolar a cada 8 milisegundos passando o parâmetro top do getBoundingClientRect() - retorna o tamanho de um elemento e sua posição relativa ao viewport - do elemento guardado na variável local e o id do setInterval será armazenado na variável animação. Após isso declaramos a função scrolar que recebecomo parâmetro final - contem o y do elemento em relação ao topo da página, depois de coletar os dados comparamos se o eixo y atual é maior ou igual ao eixo y final caso verdadeiro (chamaremos a função limparIntervalo - citada anteriormente - e passamos o id do setInterval presente na váriavel animacaoId)
+    base:
+    Bloco nome:
+        resumo:
+            Bloco responsável
+        Passo a passo:
+            Inicialmente  
+
+
+
+
+    base:
+    Bloco nome:
+        resumo:
+            Bloco responsável
+        Passo a passo:
+            Inicialmente    
+}
