@@ -14,23 +14,20 @@
         <header id="nav">
             <img id="logo_site" src="/static/img/logo.png" alt="Logo site">
             <div class="links_navbar"><!--links da nav bar--> 
-                <a>Pagina Inicial</a>
                 <a onclick="descer(document.getElementById('introdução_ia'))">IA</a>
                 <a onclick="descer(document.getElementById('introducao_matrizes'))">Matrizes</a>
                 <a onclick="descer(document.getElementById('pag_card'))">Aplicações</a>
-                <a onclick="criarModal('singIn')" id="sing_in">Sing in</a>
-                <a onclick="criarModal('singUp')" id="sing_up">Sing up</a>
             </div>
         
 
         <div id="content">
             <img id="imagem_principal_site" src="/static/img/imagem_tela_inicial.png" alt="Imagem inicial do site">
             <div id="circulo"></div>
-            <h1 id="titulo_introducao_site">{{ teste }}Podemos gerar energia infinita com a IA?</h1>
+            <h1 id="titulo_introducao_site">Podemos gerar energia infinita com a IA?</h1>
             <p id="chamariz_site">
                 Você sabe o oque é uma m    atriz energetica, e como ela impacta no seu dia dia?<br><br>Como a inteiligencia artificial está interligada nisso?
             </p>
-            <button id="botao_saiba_mais_introducao_site" onclick="descer(800)">SAIBA MAIS</button><!--Botão saiba mais-->
+            <button id="botao_saiba_mais_introducao_site" onclick="descer(document.getElementById('introdução_ia'))">SAIBA MAIS</button><!--Botão saiba mais-->
             
         </div>
         
@@ -113,7 +110,7 @@
                     <div><!-- div com titulo descrição e saiba mais -->
                         <h1 id="titulo_quiz">Testar seus conhecimentos</h1>
                         <p id="conteudo_quiz">Para testear seus conhecimentos adquiridos a cima, desenvolvemos um quiz com 3 perguntas rapidas e polemicas para você!</p>
-                        <button id="botao_quiz" onclick="criarModal('IA')">TESTE</button>
+                        <button id="botao_quiz" onclick="criarModal('quiz')">TESTE</button>
                     </div>
                         <img id="imagem_quiz" src="/static/img/quiz.webp" alt="Imagem QUIZ">
                 </div>
@@ -152,9 +149,7 @@
 
         <footer id="rodaroda">
             <img id="imagem_usuario" src="/static/img/usuario.png" alt="usuario">
-
-                <input id="comentarios" type="text" placeholder="Deixe sua opinião!">
-                <button id="submeter_coment">submeter comentário</button>
+            <button id="botao_comentarios" onclick="criarModal('opinião')">mande seu comentário</button>
             <img id="imagem_logo_roda_pe" src="/static/img/logo.png" alt="logo">
             <p id="creditos" >@creditos</p>
 

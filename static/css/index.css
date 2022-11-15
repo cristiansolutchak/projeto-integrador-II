@@ -456,11 +456,11 @@ body{
 }
 
 .ajustarModal{
-  animation: ajustarModal 1s;
+  animation: ajustarModal 1s cubic-bezier(.47,.01,.57,1);
 }
 
 .abrirModal{
-  animation: abrirModals 1s;
+  animation: abrirModals 1s cubic-bezier(.47,.01,.57,1);
 }
 
 .modalAberto{

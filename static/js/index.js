@@ -1,42 +1,97 @@
 'use strict'
-// ! animação de scroll
 
-$(document).ready(()=>{
-    $("#submeter_coment").click( ()=>{
-        $.ajax({
-            type: "get",
-            url: "",
-            data: {
-                opiniao: $("#comentarios").val()
-            },
-            dataType: "application/json",
-            success: (response)=>{
-                console.log(response.seconds)
+// ! inicio do controle de saves
+
+function limparIntervalo(id){
+    clearInterval(id);
+}
+
+let envios = 0,
+    intervalo = 0,
+    intervaloId,
+    data = new Date;
+
+if(localStorage.getItem('intervalo') !== null){
+    let intervalo = data.getTime()-localStorage.getItem('intervalo');
+    if(intervalo>0){
+        envios = 3;
+        intervaloId = setInterval(()=>{
+            intervalo--;
+            if(intervalo==0) limparIntervalo(intervaloId);
+        }, 1000);
+    }else{
+        localStorage.removeItem('intervalo');
+    }
+}
+
+// ! fim do controle de saves
+
+// ! inicio do save com ajax
+
+function salvar(){
+    if(envios==3){
+        $('#resposta').html('muitos envios em um curto entervalo de tempo')
+    }else{
+        if($("#nome").val().length!=0&&$("#email").val().length!=0&&$("#comentario").val().length!=0){
+            $.ajax({
+                type: "get",
+                url: "",
+                data: {
+                    nome: $("#nome").val(),
+                    email: $("#email").val(),
+                    comentario: $("#comentario").val()
+                },
+                dataType: "application/json",
+                beforeSend: ()=>{
+                    $("#resposta").html('Enviando mensagem...');
+                }
+            }).fail((dados)=>{
+                if(dados.status==200){
+                    $("#resposta").html('Mensagem enviada com sucesso!');
+                    envios++;
+                }else $("#resposta").html('Erro ao enviar a mensagem!');
+            });
+        }else{
+            if($("#nome").val().length==0){
+                $("#resposta").html('Insira seu nome antes de enviar sua mensagem!')
+            }else if($("#email").val().length!=0){
+                $("#resposta").html('Insira seu email antes de enviar sua mensagem!')
+            }else{
+                $("#resposta").html('Insira seu comentário antes de enviar sua mensagem!')
             }
-        });  
-    });
-});
+        }
+    }
+    if(envios===3){
+        intervalo = 600;
+        localStorage.setItem('intervalo', data.getTime()+intervalo);
+        intervaloId = setInterval(()=>{
+            intervalo--;
+            if(intervalo==0) limparIntervalo(intervaloId)
+        }, 1000)
+    }
+}
 
+// ! fim do save com ajax
+
+// ! inicio da animação de scroll
 
 let y = 0,
-    animacao;
+    animacaoId;
 
 function descer(local){
-    animacao=setInterval(scrolar, 8, local.getBoundingClientRect().top);
+    animacaoId=setInterval(scrolar, 8, local.getBoundingClientRect().top);
 }
+
 
 function scrolar(final){
-    if(y>=final+20) {
-        eliminarAnimacao();
+    if(y>=final) {
+        limparIntervalo(animacaoId);
+        y=0;
         return;
-    }
-    window.scroll(0, y);
-    y+=20;
-}
-
-function eliminarAnimacao(){
-    clearInterval(animacao);
-    y=0;
+    }else{
+        window.scroll(0, y);
+        y+=20;
+    } 
 }
 
 // ! fim da animação de scroll
@@ -44,98 +99,107 @@ function eliminarAnimacao(){
 // ! abrir todos os modals
 
 let modals = {
-    'singIn': "<div id='externa'>\
-                    <button id='modalBtn' onclick='closeModal()'>x</button>\
-                </div>\
-                <form id='interna' method='POST' action='index.php'>\
-                    <h1 id='modalSingUp'>Sing Up</h1>\
-                    <p>nome</p>\
-                    <input placeholder='digite aqui seu nome' type='text' id='nome'>\
-                    <p>Email</p>\
-                    <input placeholder='digite aqui seu email' type='email' id='email'>\
-                    <p>Senha</p>\
-                    <input placeholder='digite aqui sua senha' type='text' id='senha1'>\
-                    <p>Verificar senha</p>\
-                    <input placeholder='confirme aqui sua senha' type='text' id='senha2'>\
-                    <input value='conectar-se' type='submit'>\
-                </form>",
-    'singUp': "<div id='externa'>\
-                    <button id='modalBtn' onclick='closeModal()'>x</button>\
-                </div>\
-                <form id='interna' method='POST' action='index.php'>\
-                    <h1 id='modalSingUp'>Sing Up</h1>\
-                    <p>nome</p>\
-                    <input placeholder='digite aqui seu nome' type='text' id='nome'>\
-                    <p>Email</p>\
-                    <input placeholder='digite aqui seu email' type='email' id='email'>\
-                    <p>Senha</p>\
-                    <input placeholder='digite aqui sua senha' type='text' id='senha1'>\
-                    <p>Verificar senha</p>\
-                    <input placeholder='confirme aqui sua senha' type='text' id='senha2'>\
-                    <input value='conectar-se' type='submit'>\
-                </form>",
     'IA': "<div id='externa'>\
                 <button id='modalBtn' onclick='closeModal()'>x</button>\
             </div>\
-            <form id='interna' method='POST' action='index.php'>\
+            <div id='interna' method='POST'>\
                 <h1 id='modalIA'>Inteligência Artificial</h1>\
                 <p>\
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam debitis quas eos exercitationem consectetur quod veniam itaque fugiat inventore aliquam soluta, minus quaerat doloribus et neque beatae! Distinctio, temporibus voluptate.\
                 </p>\
-            </form>", 
+            </div>", 
     'matriz': "<div id='externa'>\
                     <button id='modalBtn' onclick='closeModal()'>x</button>\
                 </div>\
-                <form id='interna' method='POST' action='index.php'>\
+                <div id='interna'>\
                     <h1 id='modalMatrize'>Matrizes energéticas</h1>\
                     <p>\
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam debitis quas eos exercitationem consectetur quod veniam itaque fugiat inventore aliquam soluta, minus quaerat doloribus et neque beatae! Distinctio, temporibus voluptate.\
                     </p>\
-               </form>",
-    "quiz":'',
+               </div>",
+    "quiz":"<div id='externa'>\
+            <button id='modalBtn' onclick='closeModal()'>x</button>\
+            </div>\
+            <div id='interna'>\
+                <h1 id='questao'>O que é uma IA?</h1>\
+                <form id='form' action='/'>\
+                    <input type='radio' id='questao1' name='questão' value='1'>\
+                    <label for='questão1'>Uma IA é uma réplica de um cérebro humano, mas criado no computador.</label><br>\
+                    <input type='radio' id='questao2' name='questão' value='2'>\
+                    <label for='questão2'>É um conjunto de cálculos utilizados para processar dados em massa.</label><br>\
+                    <input type='radio' id='questao3' name='questão' value='3'>\
+                    <label for='questão3'>É uma nova maneira usada para gerenciar redes.</label><br>\
+                    <input type='radio' id='questao4' name='questão' value='4'>\
+                    <label for='questão4'>Uma IA é uma nova tecnologia usada apenas para controle de computadores de dispositivos ultra modernos.</label><br>\
+                    <input type='button' onclick='mudarQuiz(0)' value='enviar'>\
+                </form>\
+            </div>",
     'eolica': "<div id='externa'>\
                     <button id='modalBtn' onclick='closeModal()'>x</button>\
                 </div>\
-               <form id='interna' method='POST' action='index.php'>\
+               <div id='interna'>\
                    <h1 id='modalEolica'>Energia eolica</h1>\
                    <p>\
                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam debitis quas eos exercitationem consectetur quod veniam itaque fugiat inventore aliquam soluta, minus quaerat doloribus et neque beatae! Distinctio, temporibus voluptate.\
                    </p>\
-               </form>",
+               </div>",
     'nuclear': "<div id='externa'>\
                     <button id='modalBtn' onclick='closeModal()'>x</button>\
                 </div>\
-                <form id='interna' method='POST' action='index.php'>\
+                <div id='interna'>\
                     <h1 id='modalNuclear'>Energia nuclear</h1>\
                     <p>\
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam debitis quas eos exercitationem consectetur quod veniam itaque fugiat inventore aliquam soluta, minus quaerat doloribus et neque beatae! Distinctio, temporibus voluptate.\
                     </p>\
-                </form>",
+                </div>",
     'solar': "<div id='externa'>\
                     <button id='modalBtn' onclick='closeModal()'>x</button>\
                 </div>\
-                <form id='interna' method='POST' action='index.php'>\
+                <div id='interna'>\
                     <h1 id='modalSolar'>Energia solar</h1>\
                     <p>\
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam debitis quas eos exercitationem consectetur quod veniam itaque fugiat inventore aliquam soluta, minus quaerat doloribus et neque beatae! Distinctio, temporibus voluptate.\
                     </p>\
-                </form>",
-                'hidrelétrica': "<div id='externa'>\
-                <button id='modalBtn' onclick='closeModal()'>x</button>\
+                </div>",
+    'hidrelétrica': "<div id='externa'>\
+            <button id='modalBtn' onclick='closeModal()'>x</button>\
             </div>\
-            <form id='interna' method='POST' action='index.php'>\
+            <div id='interna'>\
                 <h1 id='modalHidreletrica'>Energia hidrelétrica</h1>\
                 <p>\
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam debitis quas eos exercitationem consectetur quod veniam itaque fugiat inventore aliquam soluta, minus quaerat doloribus et neque beatae! Distinctio, temporibus voluptate.\
                 </p>\
-             </form>",
+             </div>",
+    'opinião': `<div id='externa'>
+                    <button id='modalBtn' onclick='closeModal()'>x</button>
+                </div>
+                <div id='interna'>
+                    <h1 id='modalIA'>Inteligência Artificial</h1>
+                    <input id='nome' type='text' placeholder='digite aqui seu nome!'>
+                    <input id='email' type='email' placeholder='exemplo@gmail.com!'>
+                    <textarea rows='2' cols='100' id='comentario' placeholder='Deixe sua opinião!'></textarea>
+                    <button onclick='salvar()' id='submeter_coment'>submeter comentário</button>
+                    <p id='resposta'></p>\
+                </div>`,
 }
 
+
 const CONTENT=document.body.innerHTML
+
 
 let interna,
     externa,
     posicoes = [];
+
+function atualizarPosicoes(){
+    const BOTOES = ['#botao_ia', '#botao_matriz', '#botao_quiz', '#card1', '#card2', '#card3', '#card4', '#botao_comentarios'];
+    let x = 0;
+    for(let i of BOTOES){
+        let elemento = $(i)[0];
+        posicoes[x++] = elemento.getBoundingClientRect();
+    }
+}
+
 
 function criarModal(tipo){
     atualizarPosicoes();
@@ -174,14 +238,10 @@ function definirPosisaoInicialEFinal(local){
         --posicaoFinalX: ${left};
         --posicaoFinalY: ${top};
     }`;
-    $('#inicio')[0].innerHTML = `:root{
-        --posicaoInicialX: ${local.x}px;
-        --posicaoInicialY: ${local.y}px;
-    }`;
     interna.classList = 'ajustarModal';
     setTimeout(()=>{
         interna.classList = 'abrirModal';
-    }, 990)
+    }, 985)
     setTimeout(() => {
         interna.classList = 'modalAberto';
     }, 1990);
@@ -195,7 +255,67 @@ function definirPosisaoInicialEFinal(local){
     }, 2990);
 }
 
+
+
+
 // ! fim da função de abrir todos os modals
+
+//! inicio quiz
+let acertos = 0,
+    qual = 0;
+
+function mudarQuiz(quiz){
+    const contents = [
+        "<h1 id='questao'>2- O que é uma matriz energética?</h1>\
+        <form id='form' action='/'>\
+            <input type='radio' id='questao1' name='questão' value='1'>\
+            <label for='questão1'>Uma matriz energética é uma forma de gerar energia usando apenas biocombustível.</label><br>\
+            <input type='radio' id='questao2' name='questão' value='2'>\
+            <label for='questão2'>Uma matriz energética é uma nova maneira de gerar eletricidade.</label><br>\
+            <input type='radio' id='questao3' name='questão' value='3'>\
+            <label for='questão3'>É qualquer forma de geração de energia.</label><br>\
+            <input type='radio' id='questao4' name='questão' value='4'>\
+            <label for='questão4'>Qualquer tipo de consumo de energia é considerado matriz energética.</label><br>\
+            <input type='button' onclick='mudarQuiz(1)' value='enviar'>\
+        </form>",
+        "<h1 id='questao'>3- Qual o uso da IA nas matrizes energéticas?</h1>\
+        <form id='form' action='/'>\
+            <input type='radio' id='questao1' name='questão' value='1'>\
+            <label for='questão1'>Controlar todo e qualquer movimento dos geradores.</label><br>\
+            <input type='radio' id='questao2' name='questão' value='2'>\
+            <label for='questão2'>Mover apenas as partes externas dos geradores.</label><br>\
+            <input type='radio' id='questao3' name='questão' value='3'>\
+            <label for='questão3'>A IA pode mover tudo dos geradores, podendo assim tirar uma maior eficiência dos geradores.</label><br>\
+            <input type='radio' id='questao4' name='questão' value='4'>\
+            <label for='questão4'>A IA pode fazer apenas relatórios e estatísticas dos geradores, mostrando a temperatura, geração, desgaste entre outros, podendo assim gerar uma ótima segurança dos geradores.</label><br>\
+            <input type='button' onclick='mudarQuiz(2)' value='enviar'>\
+        </form>",
+        "<h1 id='questao'>Resultado</h1>\
+        <form id='form' action='/'>\
+            <p id='resultado'></p>\
+        </form>"
+    ];
+    let corretos = [1, 2, 2],
+        questoes = ['questao1', 'questao2', 'questao3', 'questao4'];
+    for(const I in questoes){
+        if($("#"+questoes[I])[0].checked){
+            if(corretos[qual] == I) acertos++;
+            break;
+        }
+    }
+    qual++;
+    interna.innerHTML = contents[quiz];
+    if(quiz === 2){
+        let content;
+        if(!qual) content = "Infelismente você não acertou nenhuma questão, mais sorte na proxima.";
+        else if(qual == 1)content = "Infelismente você acertou 1 questão, mais sorte na proxima!";
+        else if(qual == 2)content = "Parabéns, você acertou 2 questões!!";
+        else content = "Parabéns, você acertou 3 questões!!!";
+        $("#resultado")[0].innerHTML = content;
+    }
+}
+
+// ! fim quiz
 
 // ! fechar modals
 
@@ -237,15 +357,5 @@ function mudar(elemento1, elemento2){
         btn1.style.backgroundColor = 'white';
         btn2.style.backgroundColor = 'white';
         btn3.style.backgroundColor = 'red';
-    }
-}
-
-
-const BOTOES = ['#sing_in', '#sing_up', '#botao_ia', '#botao_matriz', '#botao_quiz', '#card1', '#card2', '#card3', '#card4']
-function atualizarPosicoes(){
-    let x = 0
-    for(let i of BOTOES){
-        let elemento = $(i)[0]
-        posicoes[x++] = elemento.getBoundingClientRect()
     }
 }
